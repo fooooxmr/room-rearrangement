@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>План комнаты — вид сверху</title>
+<title>Варианты перестановки — вид сверху</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -12,189 +12,176 @@
   body { margin:0; font-family:Manrope,system-ui,sans-serif; background:var(--bg); color:var(--ink); line-height:1.5; }
   header { padding:36px 20px 8px; max-width:1180px; margin:0 auto; }
   h1 { font-size:clamp(26px,4vw,40px); letter-spacing:-.03em; margin:0 0 8px; }
-  header p { margin:0; max-width:760px; color:var(--muted); }
+  header p { margin:0; max-width:780px; color:var(--muted); }
   main { max-width:1180px; margin:0 auto; padding:20px; }
   .note { background:#fff6e8; border:1px solid #ead7b8; border-radius:12px; padding:12px 14px; color:#5c4a32; font-size:14px; margin:18px 0; }
   .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
   @media (max-width:980px) { .grid { grid-template-columns:1fr; } }
   .sheet { background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:14px 14px 8px; }
   .sheet h2 { margin:0 0 2px; font-size:18px; }
-  .sheet .sub { margin:0 0 8px; color:var(--muted); font-size:13px; min-height:2.6em; }
-  svg.plan { display:block; background:#fff; }
-  .why { display:grid; grid-template-columns:1.3fr .7fr; gap:18px; margin-top:18px; }
-  @media (max-width:980px) { .why { grid-template-columns:1fr; } }
-  h3 { margin:0 0 8px; font-size:16px; }
-  ol, ul { margin:0; padding-left:18px; color:#3a312b; }
+  .tag { display:inline-block; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#8a5a3c; margin-bottom:4px; }
+  .sheet .sub { margin:0 0 8px; color:var(--muted); font-size:14px; min-height:4.4em; }
+  .sheet svg { display:block; max-width:100%; height:auto; background:#fff; }
+  h3 { margin:22px 0 8px; font-size:16px; }
+  ol { margin:0; padding-left:18px; }
   li { margin:6px 0; }
-  .measure { background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:14px 16px; }
-  .measure li span { color:var(--muted); }
   footer { color:var(--muted); font-size:13px; padding:8px 20px 40px; max-width:1180px; margin:0 auto; }
 </style>
 </head>
 <body>
 <header>
-  <h1>План комнаты, вид сверху</h1>
-  <p>Снят с ваших трёх фотографий. Это не новая генерация интерьера: те же стены, те же окна, та же мебель, те же размеры. Предыдущие картинки комнату не повторяли, со страницы они убраны.</p>
+  <h1>Четыре варианта, вид сверху</h1>
+  <p>Одна и та же комната и та же мебель, что на ваших фото. Клетка 50 см. Север сверху, окно в сад снизу, окно во двор справа, дверь слева. Зелёная линия значит, что с подушки экран прямо перед лицом. Красная значит, что смотреть приходится боком.</p>
 </header>
 <main>
-  <div class="note">Размеры оценены по фото, это не замер рулеткой. Погрешность порядка 20–30 см. Критическая цифра для этой расстановки: от угла у окна в сад до дверного проёма по стене с дверью должно быть не меньше 250 см. Ниже написано, что именно померить.</div>
+  <div class="note">Размеры сняты с фото, это не замер. Погрешность около 20–30 см. Вариант 2 встаёт, только если от угла у окна в сад до двери не меньше 250 см. Вариант 4 этого не требует, но телевизор надо перевесить.</div>
   <div class="grid">
     <section class="sheet">
-      <h2>Как стоит сейчас</h2>
-      <p class="sub">С подушки телевизор слева, под прямым углом. Смотреть можно только повернувшись на бок. Сушилка стоит в этом же углу.</p>
-      <div id="now"></div>
+      <div class="tag">Сейчас</div>
+      <h2>1. Как стоит</h2>
+      <p class="sub">Кровать к окну в сад, телевизор на стене справа. С подушки его видно только боком. Сушилка в этом углу, тумба у ног.</p>
+      <div id="v1"></div>
     </section>
     <section class="sheet">
-      <h2>Как поставить</h2>
-      <p class="sub">Кровать разворачивается изголовьем к стене с дверью. Телевизор остаётся на своей стене и оказывается ровно напротив подушек.</p>
-      <div id="next"></div>
+      <div class="tag">Телевизор не перевешивать</div>
+      <h2>2. Кровать напротив экрана</h2>
+      <p class="sub">Изголовье к стене с дверью, до проёма. Экран остаётся на своей стене и оказывается прямо перед подушками. Тумба у головы. Шкафы вместе, столик у окна во двор.</p>
+      <div id="v2"></div>
+    </section>
+    <section class="sheet">
+      <div class="tag">Кровать не двигать</div>
+      <h2>3. Только навести порядок</h2>
+      <p class="sub">Кровать остаётся к окну в сад. Тумба переезжает к подушке, шкафы встают парой, столик ближе к свету, сушилка уходит. Смотреть телевизор по-прежнему боком.</p>
+      <div id="v3"></div>
+    </section>
+    <section class="sheet">
+      <div class="tag">Телевизор перевесить</div>
+      <h2>4. Экран на стену с садом</h2>
+      <p class="sub">Кровать изголовьем к дальней стене, телевизор левее окна в сад, по центру кровати. Дверь не мешает. На стене будут новые отверстия.</p>
+      <div id="v4"></div>
     </section>
   </div>
-  <div class="why">
-    <section>
-      <h3>Почему так, а не «ещё десять картинок»</h3>
-      <ol>
-        <li>Телевизор уже висит на стене с окном во двор, на высоте глаз. Его не надо ставить на пол и не надо перевешивать: перевешивание даёт новые дыры, а стена напротив сейчас занята окном в сад.</li>
-        <li>Чтобы экран был напротив лица, изголовье должно встать на стену с дверью, в южной части, до проёма. Дверь при этом открывается в свой проём и кровать не задевает.</li>
-        <li>Тумба одна, и она встаёт у подушки, между кроватью и дверью. Сейчас она у ног, телефон с неё не достать.</li>
-        <li>Оба шкафа встают рядом на дальней стене, у печной колонны. Белый столик со стеллажом сдвигается к окну во двор: днём там свет сбоку, сейчас столик в самом тёмном углу.</li>
-        <li>Сушилка из комнаты как постоянный предмет уходит. В разложенном виде она перекрывает именно тот угол, куда смотрят с кровати. Сложенная помещается за широким шкафом.</li>
-        <li>Под оба окна ничего не ставится: там конвекторы, им нужен воздух. Шторы тоже должны закрываться.</li>
-      </ol>
-      <h3 style="margin-top:16px">Что в этой расстановке неидеально</h3>
-      <ul>
-        <li>С кровати к окну в сад не подойти: длинная сторона стоит в 30 см от этой стены. Заправлять кровать и вставать можно только со стороны двери. Для спальни это нормальный обмен на прямой взгляд в телевизор.</li>
-        <li>До экрана около 3,5 м. Для 32 дюймов это дальний, но нормальный кинопросмотр лёжа. Ближе экран не поставить: длину задаёт кровать, а не пустое место посреди пола.</li>
-        <li>Центр экрана лучше опустить до 115 см от пола. Сейчас он висит выше, потому что под ним сушилка. Кронштейн тот же, стена та же.</li>
-      </ul>
-    </section>
-    <section class="measure">
-      <h3>Четыре замера, и план станет точным</h3>
-      <ol>
-        <li>Стена с окном в сад, от угла до угла. <span>На плане 420 см.</span></li>
-        <li>Стена с дверью, от угла у окна в сад до дверного проёма. <span>Нужно не меньше 250 см.</span></li>
-        <li>Ширина кровати по изголовью и длина до ножек. <span>На плане 175 × 215 см, матрас 160 × 200.</span></li>
-        <li>Куда открывается дверь: в комнату или наружу. <span>На плане створка ходит четвертью круга внутри проёма и кровати не касается.</span></li>
-      </ol>
-      <p style="color:var(--muted);font-size:13px;margin:12px 0 0">Если второй замер окажется меньше 250 см, кровать на эту стену не встанет. Тогда телевизор придётся переносить на стену с окном в сад, левее окна, а кровать ставить изголовьем к дальней стене. Это уже новые отверстия в стене, поэтому сначала стоит померить.</p>
-    </section>
-  </div>
+  <h3>Что из этого реально удобно</h3>
+  <ol>
+    <li>Вариант 2, если от угла до двери есть 250 см. Кровать тяжёлая, её разворачивают один раз. Телевизор только опустить до 115 см от пола: сейчас он выше из-за сушилки.</li>
+    <li>Вариант 4, если у двери места меньше или кровать крутить не хотите. Экран переносится на сплошной кусок стены левее окна в сад.</li>
+    <li>Вариант 3 ничего не ломает и за вечер делается вдвоём, но кино с кровати так и остаётся боковым.</li>
+  </ol>
 </main>
-<footer>Масштаб на чертеже: клетка 50 см. Север сверху, окно в сад снизу, окно во двор справа, дверь слева.</footer>
+<footer>Под окнами ничего не стоит: там конвекторы. Шкафы нарисованы своими размерами, узкий и широкий, не один общий.</footer>
 <script>
-const W = 420, D = 410, S = 1.35, PAD = 54;
+const W = 420, D = 410, S = 1.35, PAD = 48;
 function el(name, attrs, parent) {
-  const n = document.createElementNS("https://www.w3.org/2000/svg", name);
+  const n = document.createElementNS("http://www.w3.org/2000/svg", name);
   for (const k in attrs) n.setAttribute(k, attrs[k]);
   parent.appendChild(n);
   return n;
 }
 function X(x) { return PAD + x * S; }
 function Y(y) { return PAD + (D - y) * S; }
-
-function mount(id, items) {
+function mount(id, draw) {
   const host = document.getElementById(id);
   const vbW = W * S + PAD * 2, vbH = D * S + PAD * 2;
-  const w = host.clientWidth || 560;
-  const h = Math.round(w * vbH / vbW);
-  const svg = el("svg", {
-    viewBox: "0 0 " + vbW + " " + vbH,
-    width: String(w), height: String(h)
-  }, host);
-  for (let x=0; x<=W; x+=50) el("line", { x1:X(x), y1:Y(0), x2:X(x), y2:Y(D), stroke:"#f0e7dc", "stroke-width":1 }, svg);
-  for (let y=0; y<=D; y+=50) el("line", { x1:X(0), y1:Y(y), x2:X(W), y2:Y(y), stroke:"#f0e7dc", "stroke-width":1 }, svg);
-  el("rect", { x:X(0), y:Y(D), width:W*S, height:D*S, fill:"none", stroke:"#241c16", "stroke-width":3 }, svg);
-  items.forEach(it => it(svg));
-  label(svg, W/2, D + 16, "дальняя стена, шкафы", 12, "#6f6258");
-  label(svg, W/2, -14, "окно в сад", 12, "#6f6258");
-  label(svg, -16, D/2, "дверь", 12, "#6f6258", -90);
-  label(svg, W + 16, D/2, "окно во двор", 12, "#6f6258", 90);
+  const svg = el("svg", { viewBox: "0 0 " + vbW + " " + vbH, width: Math.round(vbW), height: Math.round(vbH) }, host);
+  el("rect", { x:X(0), y:Y(D), width:W*S, height:D*S, fill:"#fffdf8", stroke:"#241c16", "stroke-width":3 }, svg);
+  for (let x = 0; x <= W; x += 50) el("line", { x1:X(x), y1:Y(0), x2:X(x), y2:Y(D), stroke:"#f0e6da", "stroke-width":1 }, svg);
+  for (let y = 0; y <= D; y += 50) el("line", { x1:X(0), y1:Y(y), x2:X(W), y2:Y(y), stroke:"#f0e6da", "stroke-width":1 }, svg);
+  draw(svg);
+  label(svg, W/2, -12, "окно в сад", 11, "#6f6258");
 }
-
-function label(svg, x, y, text, size, fill, rot) {
-  const t = el("text", {
-    x: X(x), y: Y(y), "text-anchor":"middle", "font-size": size||11,
-    "font-family":"Manrope,sans-serif", fill: fill||"#241c16"
-  }, svg);
-  if (rot) t.setAttribute("transform", `rotate(${rot} ${X(x)} ${Y(y)})`);
+function label(svg, x, y, text, size, fill) {
+  const t = el("text", { x:X(x), y:Y(y), "text-anchor":"middle", "font-size":size || 12, "font-family":"Manrope, sans-serif", fill: fill || "#241c16" }, svg);
   t.textContent = text;
 }
-function box(svg, x, y, w, h, fill, stroke, name, sub) {
-  el("rect", { x:X(x), y:Y(y+h), width:w*S, height:h*S, rx:3, fill, stroke:stroke||"#241c16", "stroke-width":1.4 }, svg);
-  label(svg, x+w/2, y+h/2+(sub?4:0), name, 11, "#241c16");
-  if (sub) label(svg, x+w/2, y+h/2-10, sub, 9, "#6f6258");
+function box(svg, x, y, w, h, fill, name) {
+  el("rect", { x:X(x), y:Y(y+h), width:w*S, height:h*S, rx:3, fill:fill, stroke:"#241c16", "stroke-width":1.2 }, svg);
+  if (name) label(svg, x + w/2, y + h/2 - 4, name, 12);
 }
 function win(svg, x, y, w, h) {
-  el("rect", { x:X(x), y:Y(y+h), width:w*S, height:h*S, fill:"#d5e4f0", stroke:"#7fa4c0", "stroke-width":1.4 }, svg);
-  label(svg, x+w/2, y+h/2, "окно", 10, "#2d5168");
+  el("rect", { x:X(x), y:Y(y+h), width:w*S, height:h*S, fill:"#d5e4f0", stroke:"#6f97b4", "stroke-width":1.2 }, svg);
 }
-function heater(svg, x, y, w, h) {
-  el("rect", { x:X(x), y:Y(y+h), width:w*S, height:h*S, fill:"#f3f0ea", stroke:"#b7aea4", "stroke-width":1 }, svg);
+function shell(svg) {
+  win(svg, 275, -8, 120, 14);
+  win(svg, W - 8, 250, 14, 120);
+  box(svg, 0, 350, 60, 60, "#e4ddd4", "печь");
+  box(svg, 0, 260, 10, 90, "#f0e2c0", "");
+  label(svg, 36, 305, "дверь", 11);
+  el("path", { d:"M " + X(0) + " " + Y(350) + " A " + (90*S) + " " + (90*S) + " 0 0 1 " + X(90) + " " + Y(260), fill:"none", stroke:"#b9a27a", "stroke-dasharray":"4 3" }, svg);
+}
+function bed(svg, x, y, w, h) {
+  box(svg, x, y, w, h, "#e6d3b0", "");
+}
+function pillows(svg, x, y, w, h) {
+  el("rect", { x:X(x), y:Y(y+h), width:w*S, height:h*S, rx:8, fill:"#f4e4ea", stroke:"#c9a3ad" }, svg);
+}
+function gaze(svg, x1, y1, x2, y2, color, text, tx, ty) {
+  el("line", { x1:X(x1), y1:Y(y1), x2:X(x2), y2:Y(y2), stroke:color, "stroke-width":2, "stroke-dasharray":"6 4" }, svg);
+  label(svg, tx, ty, text, 12, color);
+}
+function tvEast(svg, y) {
+  el("rect", { x:X(W-8), y:Y(y+78), width:8*S, height:78*S, fill:"#222" }, svg);
+  label(svg, W-46, y+36, "телевизор", 11);
+}
+function tvSouth(svg, x) {
+  el("rect", { x:X(x), y:Y(8), width:80*S, height:8*S, fill:"#222" }, svg);
+  label(svg, x+40, 28, "телевизор", 11);
 }
 
-const drawNow = [
-  svg => {
-    win(svg, 275, -6, 120, 12);
-    heater(svg, 295, 6, 80, 10);
-    win(svg, W-6, 250, 12, 120);
-    heater(svg, W-28, 285, 14, 50);
-    box(svg, 0, 350, 60, 60, "#e4ddd4", "#8d867e", "печь", "колонна");
-    box(svg, 0, 260, 8, 90, "#f0e2c0", "#8a7040", "", "");
-    label(svg, 28, 305, "дверь", 11);
-    el("path", { d:`M ${X(0)} ${Y(350)} A ${90*S} ${90*S} 0 0 1 ${X(90)} ${Y(260)}`, fill:"none", stroke:"#b9a27a", "stroke-dasharray":"4 3" }, svg);
-    box(svg, 50, 0, 175, 215, "#e6d3b0", "#8a6a3d", "кровать", "175 × 215");
-    el("rect", { x:X(78), y:Y(36), width:120*S, height:22*S, rx:8, fill:"#f3e6ea", stroke:"#c9a3ad" }, svg);
-    label(svg, 138, 25, "подушки", 9, "#8a6670");
-    box(svg, 2, 145, 46, 42, "#efdfc4", "#8a6a3d", "тумба", "");
-    box(svg, 78, 352, 50, 58, "#c8965a", "#7a542c", "шкаф", "узкий");
-    box(svg, 140, 365, 150, 45, "#f7f4ef", "#b7aea4", "столик и стеллаж", "140 × 45");
-    box(svg, 300, 352, 90, 58, "#c8965a", "#7a542c", "шкаф", "широкий");
-    el("rect", { x:X(W-8), y:Y(150), width:8*S, height:80*S, fill:"#2b2b2b" }, svg);
-    label(svg, W-36, 112, "телевизор", 10);
-    el("rect", { x:X(330), y:Y(155), width:70*S, height:18*S, fill:"none", stroke:"#c6a21e", "stroke-dasharray":"3 2" }, svg);
-    label(svg, 365, 175, "сушилка", 9, "#8a7010");
-    el("line", { x1:X(137), y1:Y(30), x2:X(137), y2:Y(70), stroke:"#9b3a2f", "stroke-width":1.6 }, svg);
-    el("line", { x1:X(137), y1:Y(70), x2:X(400), y2:Y(112), stroke:"#9b3a2f", "stroke-width":1.6, "stroke-dasharray":"5 4" }, svg);
-    label(svg, 250, 95, "взгляд боком", 11, "#9b3a2f");
-  }
-];
+mount("v1", svg => {
+  shell(svg);
+  bed(svg, 50, 0, 175, 215);
+  label(svg, 137, 110, "кровать", 14);
+  pillows(svg, 78, 8, 120, 24);
+  box(svg, 2, 150, 46, 42, "#efdfc4", "тумба");
+  box(svg, 78, 352, 50, 58, "#c8965a", "узкий");
+  box(svg, 140, 365, 145, 45, "#f7f4ef", "столик");
+  box(svg, 300, 352, 90, 58, "#c8965a", "широкий");
+  tvEast(svg, 72);
+  el("rect", { x:X(330), y:Y(150), width:70*S, height:16*S, fill:"none", stroke:"#c6a21e", "stroke-dasharray":"3 2" }, svg);
+  label(svg, 365, 168, "сушилка", 10, "#8a7010");
+  gaze(svg, 137, 40, 400, 110, "#9b3a2f", "боком", 270, 80);
+});
 
-const drawNext = [
-  svg => {
-    win(svg, 275, -6, 120, 12);
-    heater(svg, 295, 6, 80, 10);
-    win(svg, W-6, 250, 12, 120);
-    heater(svg, W-28, 285, 14, 50);
-    box(svg, 0, 350, 60, 60, "#e4ddd4", "#8d867e", "печь", "");
-    box(svg, 0, 260, 8, 90, "#f0e2c0", "#8a7040", "", "");
-    label(svg, 34, 305, "дверь", 11);
-    el("path", { d:`M ${X(0)} ${Y(350)} A ${90*S} ${90*S} 0 0 1 ${X(90)} ${Y(260)}`, fill:"none", stroke:"#b9a27a", "stroke-dasharray":"4 3" }, svg);
-    label(svg, 112, 300, "ход двери", 9, "#8a7040");
-    box(svg, 0, 30, 215, 175, "#e6d3b0", "#8a6a3d", "", "");
-    label(svg, 128, 118, "кровать 175 × 215", 12);
-    el("rect", { x:X(8), y:Y(148), width:26*S, height:78*S, rx:8, fill:"#f3e6ea", stroke:"#c9a3ad" }, svg);
-    label(svg, 46, 112, "подушки", 9, "#8a6670");
-    box(svg, 0, 208, 48, 44, "#efdfc4", "#8a6a3d", "тумба", "");
-    box(svg, 70, 352, 50, 58, "#c8965a", "#7a542c", "узкий", "");
-    box(svg, 120, 352, 90, 58, "#c8965a", "#7a542c", "широкий", "");
-    box(svg, 250, 365, 140, 45, "#f7f4ef", "#b7aea4", "столик, свет сбоку", "");
-    el("rect", { x:X(W-8), y:Y(157), width:8*S, height:80*S, fill:"#2b2b2b" }, svg);
-    label(svg, W-42, 117, "телевизор", 10);
-    el("line", { x1:X(40), y1:Y(117), x2:X(412), y2:Y(117), stroke:"#1f6b4a", "stroke-width":1.8, "stroke-dasharray":"6 4" }, svg);
-    el("polygon", { points:`${X(400)},${Y(122)} ${X(412)},${Y(117)} ${X(400)},${Y(112)}`, fill:"#1f6b4a" }, svg);
-    label(svg, 250, 136, "взгляд прямо, около 3,5 м", 11, "#1f6b4a");
-    label(svg, 118, 228, "до двери 10 см", 9, "#9b3a2f");
-  }
-];
+mount("v2", svg => {
+  shell(svg);
+  bed(svg, 0, 30, 215, 175);
+  label(svg, 120, 120, "кровать", 14);
+  pillows(svg, 8, 70, 26, 90);
+  box(svg, 0, 210, 48, 44, "#efdfc4", "тумба");
+  box(svg, 70, 352, 50, 58, "#c8965a", "узкий");
+  box(svg, 120, 352, 90, 58, "#c8965a", "широкий");
+  box(svg, 250, 365, 140, 45, "#f7f4ef", "столик");
+  tvEast(svg, 78);
+  gaze(svg, 50, 117, 400, 117, "#1f6b4a", "прямо, 3,5 м", 230, 138);
+});
 
-try {
-  mount("now", drawNow);
-  mount("next", drawNext);
-} catch (err) {
-  var p = document.createElement("pre");
-  p.textContent = String(err && err.stack || err);
-  document.body.insertBefore(p, document.body.firstChild);
-}
+mount("v3", svg => {
+  shell(svg);
+  bed(svg, 55, 0, 175, 215);
+  label(svg, 142, 120, "кровать", 14);
+  pillows(svg, 80, 8, 120, 24);
+  box(svg, 4, 8, 46, 42, "#efdfc4", "тумба");
+  box(svg, 70, 352, 50, 58, "#c8965a", "узкий");
+  box(svg, 120, 352, 90, 58, "#c8965a", "широкий");
+  box(svg, 245, 365, 145, 45, "#f7f4ef", "столик у света");
+  tvEast(svg, 72);
+  gaze(svg, 140, 40, 400, 110, "#9b3a2f", "всё ещё боком", 280, 78);
+});
+
+mount("v4", svg => {
+  shell(svg);
+  bed(svg, 130, 195, 175, 215);
+  label(svg, 217, 300, "кровать", 14);
+  pillows(svg, 155, 368, 120, 24);
+  box(svg, 312, 366, 46, 42, "#efdfc4", "тумба");
+  box(svg, 362, 18, 58, 50, "#c8965a", "");
+  label(svg, 334, 42, "узкий", 11);
+  box(svg, 362, 70, 58, 90, "#c8965a", "");
+  label(svg, 330, 112, "широкий", 11);
+  box(svg, 12, 0, 100, 45, "#f7f4ef", "столик");
+  tvSouth(svg, 177);
+  gaze(svg, 217, 360, 217, 40, "#1f6b4a", "прямо", 280, 200);
+});
 </script>
 </body>
 </html>
