@@ -33,12 +33,37 @@
   ol { margin:0; padding-left:18px; }
   li { margin:6px 0; }
   footer { color:var(--muted); font-size:13px; padding:8px 20px 36px; }
+  .jump { display:inline-block; margin-top:12px; color:var(--ink); font-weight:700; }
+  .old h2 { font-size:22px; margin:28px 0 6px; }
+  .old .lead { color:var(--muted); margin:0 0 14px; max-width:820px; }
+  .oldgrid { display:grid; gap:16px; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); }
+  .oldgrid .card, .variant { background:var(--paper); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+  .oldgrid img, .shots img { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; cursor:zoom-in; background:#eee4d8; }
+  .oldgrid .body { padding:12px 14px 16px; }
+  .oldgrid h3, .variant h3 { margin:2px 0 6px; font-size:17px; }
+  .oldgrid p, .variant p { margin:0; color:var(--muted); font-size:14px; }
+  .variant { padding:16px; margin:0 0 16px; }
+  .variant p { margin-bottom:12px; }
+  .num { color:#8a5a3c; font-weight:800; font-size:12px; letter-spacing:.06em; text-transform:uppercase; }
+  .shots { display:grid; gap:10px; grid-template-columns:repeat(3, 1fr); }
+  .shots figure { margin:0; }
+  .shots figcaption { font-size:13px; color:var(--muted); margin-top:4px; }
+  @media (max-width:760px) { .shots { grid-template-columns:1fr; } }
+  #lb { position:fixed; inset:0; background:rgba(20,14,10,.92); display:none; align-items:center; justify-content:center; z-index:50; padding:24px; }
+  #lb.open { display:flex; }
+  #lb img { max-width:100%; max-height:86vh; border-radius:12px; }
+  #lb .cap { position:absolute; bottom:18px; left:0; right:0; text-align:center; color:#f1e7dc; font-size:15px; padding:0 70px; }
+  #lb button { position:absolute; background:rgba(255,255,255,.12); color:#fff; border:0; width:48px; height:48px; border-radius:50%; font-size:24px; cursor:pointer; }
+  #lb .prev { left:16px; top:50%; transform:translateY(-50%); }
+  #lb .next { right:16px; top:50%; transform:translateY(-50%); }
+  #lb .close { right:16px; top:16px; }
 </style>
 </head>
 <body>
 <header>
   <h1>Три перестановки мебели</h1>
   <p>Двигаются узкий шкаф, широкий шкаф, белый столик и стул. Кровать остаётся изголовьем к стене с дверью, телевизор напротив подушек. Кондиционер остаётся на стене с садом. Синяя стрелка на плане — поток воздуха: вверх и к окну, мимо кровати.</p>
+  <a class="jump" href="#earlier">Первые 20 вариантов и исходные фото</a>
 </header>
 <main>
   <div class="note">Стены не сверлим. Кондиционер и телевизор висят там, где висят. Размеры на плане сняты с фото, погрешность около 20–30 см.</div>
@@ -84,7 +109,25 @@
     <li>Вариант 4, если столик нужен у двери. Для зеркала этот угол темнее.</li>
     <li>Поток с кондиционера — вверх и к окну в сад, мимо кровати. Сам блок остаётся на стене.</li>
   </ol>
+  <section class="old" id="earlier">
+    <h2>Первые фото</h2>
+    <p class="lead">Исходные снимки комнаты и все варианты, которые уже были на этой странице. Нажмите на фото, чтобы открыть его крупно.</p>
+    <div class="oldgrid" id="orig"></div>
+    <h2>Варианты 1–10</h2>
+    <p class="lead">По одному кадру на вариант.</p>
+    <div class="oldgrid" id="g1"></div>
+    <h2>Варианты 11–20</h2>
+    <p class="lead">По три ракурса: окно в сад, дверь со шкафами, окно во двор.</p>
+    <div id="g2"></div>
+  </section>
 </main>
+<div id="lb" role="dialog" aria-modal="true">
+  <button class="close" type="button" aria-label="Закрыть">&times;</button>
+  <button class="prev" type="button" aria-label="Назад">&#8249;</button>
+  <img alt="">
+  <button class="next" type="button" aria-label="Вперёд">&#8250;</button>
+  <div class="cap"></div>
+</div>
 <footer>На видах стул вышел чуть проще вашего белого стула с деревянными ножками. Шкафы и столик те же. Под окнами конвекторы, их не заставляем.</footer>
 <script>
 const W = 420, D = 410, S = 1.35, PAD = 48;
@@ -175,6 +218,77 @@ mount("v4", svg => {
   chair(svg, 110);
   box(svg, 220, 352, 50, 58, "#c8965a", "узкий");
   box(svg, 272, 352, 90, 58, "#c8965a", "широкий");
+});
+
+const orig = [
+  ["orig_1.jpg", "Вид на окно в сад и кровать"],
+  ["orig_2.jpg", "Вид на дверь, колонну и шкафы"],
+  ["orig_3.jpg", "Вид на окно во двор и телевизор"],
+];
+const set1 = [
+  ["01_classic_symmetry.jpg", "Классическая симметрия", "Кровать по центру стены, по бокам тумба и цветок. Шкафы стоят рядом и образуют единую стену хранения."],
+  ["02_wardrobe_niche.jpg", "Ниша из шкафов", "Изголовье кровати между двумя шкафами, получается альков как в гостинице."],
+  ["03_zoning_wardrobe.jpg", "Зонирование шкафом", "Шкаф поперёк комнаты отделяет спальню от зоны, где одеваются и красятся."],
+  ["04_beauty_corner.jpg", "Бьюти-уголок у окна", "Туалетный столик у окна, чтобы краситься при дневном свете."],
+  ["05_daybed_lounge.jpg", "Кровать как диван", "Кровать длинной стороной к стене, центр комнаты свободен."],
+  ["06_home_cinema.jpg", "Домашний кинотеатр", "Телевизор напротив кровати с тёплой подсветкой."],
+  ["07_reading_nook.jpg", "Уголок для чтения", "Стул, тумба и ковёр у окна с цветами."],
+  ["08_home_office.jpg", "Рабочее место", "Столик сбоку от окна работает как письменный стол."],
+  ["09_diagonal_bed.jpg", "Кровать по диагонали", "Изголовье в углу, за ним растение и гирлянда."],
+  ["10_scandi_boho.jpg", "Скандинавский бохо", "Расстановка из варианта 1 плюс текстиль, корзины и растения."],
+];
+const set2 = [
+  ["Кровать напротив телевизора", "Изголовье к стене с дверью, изножье смотрит на телевизор.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+  ["Единый блок хранения", "Оба шкафа стоят рядом у окна во двор, тумба переезжает к изголовью, сушилка убрана.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+  ["Туалетный столик у двери", "Столик с зеркалом переезжает на стену с дверью, шкафы встают вместе.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+  ["Узкий шкаф в углу у телевизора", "Узкий шкаф занимает угол, где стояла сушилка.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+  ["Кровать между шкафами", "Кровать изголовьем к стене со шкафами, столик в светлый угол.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+  ["Чайный уголок у окна во двор", "У окна во двор стул, тумба, ковёр и цветок. Шкафы стоят единым рядом.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+  ["Кровать как диван", "Кровать длинной стороной к стене. В центре тумба как журнальный столик.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+  ["Столик и телевизор меняются местами", "Столик в угол между двумя окнами, телевизор напротив кровати.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+  ["Скандинавский бохо", "Расстановка из варианта 12 плюс текстиль, корзины и растения.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+  ["Вечерний уют", "Расстановка из варианта 18 вечером: гирлянды и тёплый свет.", ["Вид на окно в сад", "Вид на дверь и шкафы", "Вид на окно во двор"]],
+];
+const gallery = [];
+function img(src, caption) {
+  const i = gallery.length;
+  gallery.push({ src: "images/" + src, caption });
+  return `<img loading="lazy" src="images/${src}" alt="${caption}" data-i="${i}">`;
+}
+document.getElementById("orig").innerHTML = orig.map(([src, cap]) =>
+  `<div class="card">${img(src, "Сейчас: " + cap)}<div class="body"><p>${cap}</p></div></div>`).join("");
+document.getElementById("g1").innerHTML = set1.map(([src, title, text], k) =>
+  `<div class="card">${img(src, (k + 1) + ". " + title)}<div class="body"><div class="num">Вариант ${k + 1}</div><h3>${title}</h3><p>${text}</p></div></div>`).join("");
+document.getElementById("g2").innerHTML = set2.map(([title, text, caps], k) => {
+  const n = k + 11;
+  const shots = ["a", "b", "c"].map((s, j) =>
+    `<figure>${img(n + "_" + s + ".jpg", n + ". " + title + " — " + caps[j])}<figcaption>${caps[j]}</figcaption></figure>`).join("");
+  return `<div class="variant"><div class="num">Вариант ${n}</div><h3>${title}</h3><p>${text}</p><div class="shots">${shots}</div></div>`;
+}).join("");
+const lb = document.getElementById("lb");
+const lbImg = lb.querySelector("img");
+const lbCap = lb.querySelector(".cap");
+let cur = 0;
+function show(i) {
+  cur = (i + gallery.length) % gallery.length;
+  lbImg.src = gallery[cur].src;
+  lbImg.alt = gallery[cur].caption;
+  lbCap.textContent = gallery[cur].caption;
+  lb.classList.add("open");
+}
+document.addEventListener("click", (e) => {
+  const t = e.target;
+  if (t.matches && t.matches("img[data-i]")) show(+t.dataset.i);
+});
+lb.querySelector(".close").onclick = () => lb.classList.remove("open");
+lb.querySelector(".prev").onclick = () => show(cur - 1);
+lb.querySelector(".next").onclick = () => show(cur + 1);
+lb.addEventListener("click", (e) => { if (e.target === lb) lb.classList.remove("open"); });
+document.addEventListener("keydown", (e) => {
+  if (!lb.classList.contains("open")) return;
+  if (e.key === "Escape") lb.classList.remove("open");
+  if (e.key === "ArrowLeft") show(cur - 1);
+  if (e.key === "ArrowRight") show(cur + 1);
 });
 </script>
 </body>
