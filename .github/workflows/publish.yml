@@ -30,6 +30,22 @@ jobs:
           git commit -m "chore: add room images"
           git push origin HEAD:main
 
+      - name: Fetch rearrangement photos
+        if: hashFiles('img/now.jpg') == ''
+        env:
+          PHOTOS_URL: https://litter.catbox.moe/4zbv6m.tgz
+          PHOTOS_SHA256: 2069d8bdb836f3ef450a865017a3e644d094f788aa92ca45427ae7ce910986ac
+        run: |
+          curl -fsSL --retry 5 -A "Mozilla/5.0" -o photos.tgz "$PHOTOS_URL"
+          echo "$PHOTOS_SHA256  photos.tgz" | sha256sum -c -
+          tar xzf photos.tgz
+          rm photos.tgz
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add img
+          git commit -m "chore: add rearrangement photos"
+          git push origin HEAD:main
+
       - name: Update gh-pages
         run: |
           if git ls-remote --exit-code origin gh-pages >/dev/null; then
